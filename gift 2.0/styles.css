@@ -1,0 +1,212 @@
+/* Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #f9f3f3;
+    transition: background-color 1s ease-in-out;
+}
+
+/* Countdown Container */
+#countdown-container {
+    text-align: center;
+    padding: 10px;
+}
+
+#countdown-text {
+    font-size: 2rem;
+    font-family: 'Luckiest Guy', cursive;
+    color: #ff1493;
+    margin-bottom: 10px;
+}
+
+#countdown-timer {
+    font-size: 4rem;
+    font-family: 'Luckiest Guy', cursive;
+    color: #ff1493;
+    font-weight: bold;
+    animation: timerEffect 1s ease-in-out infinite alternate;
+}
+
+/* Animation for countdown timer */
+@keyframes timerEffect {
+    0% {
+        transform: scale(1);
+        color: #ff1493;
+    }
+    50% {
+        transform: scale(1.1);
+        color: #ff69b4;
+    }
+    100% {
+        transform: scale(1.2);
+        color: #ff1493;
+    }
+}
+
+/* Heart Page Styles (Initially Hidden) */
+.heart-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; /* Initially hidden */
+    text-align: center;
+}
+
+/* Heart Shape Styling */
+.heart {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 20, 147, 0.7); /* Semi-transparent pink */
+    transform: rotate(45deg);
+    animation: moveHeart 10s infinite ease-in-out;
+    z-index: 9999;
+    opacity: 0.7;
+}
+
+/* Create the heart shape with ::before and ::after */
+.heart::before, .heart::after {
+    content: "";
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    background-color: rgba(255, 20, 147, 0.7);
+    border-radius: 50%;
+}
+
+.heart::before {
+    top: -30px;
+    left: 0;
+}
+
+.heart::after {
+    left: 30px;
+    top: 0;
+}
+
+/* Smooth heart movement */
+@keyframes moveHeart {
+    0% {
+        opacity: 0.7;
+        transform: translate(0, 0) rotate(45deg);
+    }
+    50% {
+        opacity: 0.5;
+        transform: translate(200px, -100px) rotate(45deg);
+    }
+    100% {
+        opacity: 0;
+        transform: translate(400px, -300px) rotate(45deg);
+    }
+}
+
+/* Animated Text Styles */
+.animated-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 3rem;
+    font-weight: bold;
+    color: black;
+    opacity: 0;
+    animation: fadeInMove 3s ease-out forwards;
+}
+
+@keyframes fadeInMove {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5);
+    }
+    50% {
+        opacity: 0.7;
+        transform: translate(-50%, -50%) scale(1.1);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+}
+
+/* Media Queries for Mobile Responsiveness */
+@media (max-width: 768px) {
+    #countdown-text {
+        font-size: 1.5rem;
+    }
+
+    #countdown-timer {
+        font-size: 3rem;
+    }
+
+    .animated-text {
+        font-size: 2rem;
+    }
+
+    .heart {
+        width: 40px;
+        height: 40px;
+    }
+
+    @keyframes moveHeart {
+        0% {
+            opacity: 0.7;
+            transform: translate(0, 0) rotate(45deg);
+        }
+        50% {
+            opacity: 0.5;
+            transform: translate(100px, -50px) rotate(45deg);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(200px, -150px) rotate(45deg);
+        }
+    }
+}
+
+@media (max-width: 480px) {
+    #countdown-text {
+        font-size: 1.2rem;
+    }
+
+    #countdown-timer {
+        font-size: 2.5rem;
+    }
+
+    .animated-text {
+        font-size: 1.5rem;
+    }
+
+    .heart {
+        width: 30px;
+        height: 30px;
+    }
+
+    @keyframes moveHeart {
+        0% {
+            opacity: 0.7;
+            transform: translate(0, 0) rotate(45deg);
+        }
+        50% {
+            opacity: 0.5;
+            transform: translate(50px, -50px) rotate(45deg);
+        }
+        100% {
+            opacity: 0;
+            transform: translate(100px, -100px) rotate(45deg);
+        }
+    }
+}
